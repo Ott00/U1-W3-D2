@@ -235,6 +235,8 @@
         const tableArea = document.getElementById("tableArea");
         const table = document.createElement("table");
 
+        tableArea.appendChild(table);
+
         const th = table.appendChild(document.createElement("th"));
         th.innerText = "Immagine";
         const th2 = table.appendChild(document.createElement("th"));
@@ -246,9 +248,8 @@
         const th5 = table.appendChild(document.createElement("th"));
         th5.innerText = "Prezzo";
 
-        table.style.border = "1px solid black";
-
-        tableArea.appendChild(table);
+        table.style =
+          "border: 1px solid black; width: 100%; border-collapse: collapse";
       };
 
       generateTable();
@@ -257,7 +258,29 @@
          Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
       */
 
-      const addRow = function () {};
+      const addRow = function (image, name, product, quantity, price) {
+        const th = document.getElementsByTagName("th");
+        const arrParam = [image, name, product, quantity, price];
+
+        for (let i = 0; i < 5; i++) {
+          const td = th[i].appendChild(document.createElement("td"));
+          if (i === 0) {
+            console.log("img");
+            td.innerHTML = `<img src=${arrParam[i]} alt='Clipper' style="width: 100px;"/>`;
+          } else {
+            console.log("testo");
+            td.innerText = arrParam[i];
+          }
+        }
+      };
+
+      addRow(
+        "https://www.thepotspot.it/wp-content/uploads/2022/12/50s-love-1.jpg",
+        "Clipper",
+        "Accendino",
+        4,
+        2
+      );
 
       /* ESERCIZIO 14
         Crea una funzione che nasconda le immagini della tabella quando eseguita
